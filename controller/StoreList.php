@@ -106,14 +106,13 @@ class StoreList extends PublicController{
          FROM   (  SELECT  TIMESTAMPDIFF(MONTH,FZDeadDate,now()) AS FZMonth,
                     TIMESTAMPDIFF(MONTH,WYFDeadDate,now()) AS WYFMonth,
                     TIMESTAMPDIFF(MONTH,SFDeadDate,now()) AS SFMonth,
-                    (DFCurrentDU - DFDeadDU) DFDU,OtherQK,StoreCode,YJ
+                    (DFCurrentDU - DFDeadDU) AS DFDU,OtherQK,StoreCode,YJ
          FROM StoreList WHERE StoreCode = ? ) xTable' ;
 
          $SQLParam = [$StoreRental,$WFYUnit * $StoreArea,$SFUnit,$DFUnit,$StoreCode];
 
          $row = db()->query($SQL,$SQLParam)[0];
          $row['TotalQK'] = ROUND($row['FZQK'] + $row['WYFQK'] /*+$row['SFQK'] +$row['DFQK'] */+$row['OtherQK'],2);
-
          return json_encode($row,JSON_UNESCAPED_UNICODE);
     }
 
@@ -152,8 +151,6 @@ class StoreList extends PublicController{
 
         return $this->showDelStore($StoreCode,$StoreOwner);
     }
-
-
 
 
 }
