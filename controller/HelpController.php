@@ -14,4 +14,8 @@ Class HelpController extends \think\Controller{
         echo '以下是系统的内部地址,仅限于安装本系统的办公室才可以访问。</br>';
         print('http://'.$server_ip.'/index');
     }
+
+
+
+
 }
