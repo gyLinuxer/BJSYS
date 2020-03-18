@@ -11,8 +11,8 @@ Class HelpController extends \think\Controller{
         $server_hostname=gethostname();
         $server_hostname .= ".";
         $server_ip=gethostbyname($server_hostname);
-        echo '以下是系统的内部地址,仅限于安装本系统的办公室才可以访问。</br>';
-        print('http://'.$server_ip.'/index');
+        echo 'hostname:'.$server_hostname;
+        echo 'host:'.$server_ip;
     }
 
 
