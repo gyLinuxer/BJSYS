@@ -66,7 +66,14 @@
                 <el-input-number v-model="formData.FeeMonths" @change="handleFeeMonthsChange" size="mini" style="width: 100px;" :min="1" :max="1000" ></el-input-number>个月
             </el-form-item>
             <el-form-item label="截止日期为:">
-                <span style="color: blue;">{{formData.EndFeeDate}}</span>
+                <el-date-picker
+                        style="width:140px;"
+                        v-model="formData.EndFeeDate"
+                        type="date"
+                        value-format="yyyy-MM-dd"
+                        size="medium"
+                >
+                </el-date-picker>
             </el-form-item>
             <el-form-item label="金额:">
                 <el-input  style="width:100px;" v-model="formData.Fee" style="width:150px;" size="medium" > </el-input>
@@ -341,7 +348,11 @@
                 var dd = new Date(this.formData.StartFeeDate);
                 dd.setMonth(dd.getMonth() + v);
                 dd.setDate(dd.getDate()-1);
-                this.formData.EndFeeDate = dd.toLocaleDateString();
+                var sDate;
+                sDate =dd.toLocaleDateString();
+                sDate = sDate.replace(/\//g,'-');
+                this.formData.EndFeeDate = sDate;
+                console.log(sDate);
                 this.calcZJ();
                 this.calcWYF();
             },
