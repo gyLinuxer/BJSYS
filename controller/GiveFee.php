@@ -487,9 +487,9 @@ class GiveFee extends PublicController
             return "未选择费用结束日期";
         }
 
-        if(intval($Fee)<=0){
+        /*if(intval($Fee)<=0){
             return "费用需大于0";
-        }
+        }*/
 
         if(empty($FeeGiver)){
             return "缴费人不可为空!";
