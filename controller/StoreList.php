@@ -25,7 +25,7 @@ class StoreList extends PublicController{
         }
 
         foreach ($Data as $d){
-            if(empty($d)){
+            if($d==''){
                 return '请完整填写所有项目!';
             }
         }
